@@ -221,6 +221,34 @@ String.prototype.trimProperties = function( length ){
 };
 
 /**
+ * Trim To Ellipsis
+ * @desc Add trimToEllipsis method to String prototype.
+ * @param {number} length How many characters should we trim to.
+ * @return Trimmed string
+ */
+String.prototype.trimToEllipsis = function( length ){
+  
+    var string = this.toString();
+    
+    if( typeof string === 'undefined' || string === '' ){
+        return string;
+    }
+    if( typeof length === 'undefined' || length === '' ){
+        length = 0;
+    }
+    
+    var stringLength = this.length;
+    
+    if( stringLength <= length || length === 0 ){
+        return string;
+    }
+    else{
+        return string.substring( length, 0 ) + '...';
+    }
+    
+};
+
+/**
  * Parse Boolean
  * @desc Parse a string value as a boolean.
  * @return Boolean flag.
