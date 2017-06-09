@@ -1,32 +1,39 @@
 /**
- * String Utilities (util)
- * @fileoverview Sets up prototype functions on JavaScripts String object.
- * @author <a href="http://yaypaul.com">Paul West</a>
- * @version 2.2
- * @license None (public domain)
+ * util__string
+ * @fileoverview Sets up prototype String Utility functions on JavaScripts String object.
+ * @version 2.3
+ * @author <a href="http://yaypaul.com">YayPaul (Paul West)</a>
+ * @copyright 2017 Paul West.
+ * @license MIT
  */
 
 /**
  * Strip HTML
- * @desc Add stripHTML method to String prototype.
+ * @desc Strips all HTML tags from a string.
  * @return HTML cleaned string.
+ * @since 0.3
  */
 String.prototype.stripHTML = function(){
 	
+	'use strict';
+
 	return this.replace( /(<([^>]+)>)/ig, '' );
 	
 };
 
 /**
  * Encode UTF8
- * @desc Add encodeUTF8 method to String prototype.
+ * @desc Encodes a string in UTF8 format.
  * @return Encoded string.
+ * @since 0.1
  */
 String.prototype.encodeUTF8 = function(){
 	
-	var utf8	= '',
-		plain	= '',
-	 	c		= '';
+	'use strict';
+
+	var utf8 = '';
+	var plain = '';
+	var c = '';
 	
 	//Strip new lines
 	plain = this.replace( /\r\n/g, '\n' );
@@ -58,14 +65,20 @@ String.prototype.encodeUTF8 = function(){
 
 /**
  * Decode UTF8
- * @desc Add decodeUTF8 method to String prototype.
+ * @desc Decodes a UTF8 string.
  * @return Decoded string.
+ * @since 0.1
  */
 String.prototype.decodeUTF8 = function(){
 	
-	var plain	= '',
-		string	= '',
-		i = 0, c = 0, c1 = 0, c2 = 0;
+	'use strict';
+
+	var plain = '';
+	var string = '';
+	var i = 0;
+	var c = 0;
+	var c1 = 0;
+	var c2 = 0;
 	
 	while( string = this[ i ] ){
 	
@@ -96,17 +109,26 @@ String.prototype.decodeUTF8 = function(){
 
 /**
  * Encode Base64
- * @desc Add encodeBase64 method to String prototype.
+ * @desc Encodes a string in Base64 format.
  * @return Encoded string
+ * @since 0.1
  */
 String.prototype.encodeBase64 = function(){
 	
-	var base64	= '',
-		utf8	= '',
-		c1, c2, c3, e1, e2, e3, e4,
-		i		= 0,
-		string	= '',
-		KEY		= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	'use strict';
+
+	var base64 = '';
+	var utf8 = '';
+	var c1;
+	var c2;
+	var c3;
+	var e1;
+	var e2;
+	var e3;
+	var e4;
+	var i = 0;
+	var string = '';
+	var KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 	
 	//Ensure input is UFT8
 	utf8 = this.encodeUTF8();
@@ -141,17 +163,26 @@ String.prototype.encodeBase64 = function(){
 
 /**
  * Decode Base64
- * @desc Add decodeBase64 method to String prototype.
+ * @desc Decodes a Base64 string.
  * @return Decoded string
+ * @since 0.1
  */
 String.prototype.decodeBase64 = function(){
 	
-	var base64	= '',
-		plain	= '',
-		c1, c2, c3, e1, e2, e3, e4,
-		i		= 0,
-		string	= '',
-		KEY		= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	'use strict';
+
+	var base64 = '';
+	var plain = '';
+	var c1;
+	var c2;
+	var c3;
+	var e1;
+	var e2;
+	var e3;
+	var e4;
+	var i = 0;
+	var string = '';
+	var KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 	
 	base64 = this.replace( /[^A-Za-z0-9\+\/\=]/g, '' );
 	
@@ -185,14 +216,17 @@ String.prototype.decodeBase64 = function(){
 
 /**
  * Trim Properties
- * @desc Add trimProperties method to String prototype.
+ * @desc Trims comma separated strings to certain length of properties.
  * @param {number} length How many properties should we trim to.
  * @return Trimmed string
+ * @since 0.5
  */
 String.prototype.trimProperties = function( length ){
 	
-	var string		= this,
-		properties	= '';
+	'use strict';
+
+	var string = this;
+	var properties = '';
 	
 	if( typeof string === 'undefined' || string === '' ){
 		return '';
@@ -222,12 +256,16 @@ String.prototype.trimProperties = function( length ){
 
 /**
  * Trim To Ellipsis
- * @desc Add trimToEllipsis method to String prototype.
+ * @desc Trim strings to a certain length and adds an ellipsis if needed. 
+ *       Strings shorter than the length will not be altered.
  * @param {number} length How many characters should we trim to.
  * @return Trimmed string
+ * @since 2.2
  */
 String.prototype.trimToEllipsis = function( length ){
   
+	'use strict';
+
     var string = this.toString();
     
     if( typeof string === 'undefined' || string === '' ){
@@ -237,9 +275,7 @@ String.prototype.trimToEllipsis = function( length ){
         length = 0;
     }
     
-    var stringLength = this.length;
-    
-    if( stringLength <= length || length === 0 ){
+    if( string.length <= length || length === 0 ){
         return string;
     }
     else{
@@ -250,16 +286,23 @@ String.prototype.trimToEllipsis = function( length ){
 
 /**
  * Parse Boolean
- * @desc Parse a string value as a boolean.
+ * @desc Parse a string as a Boolean value.
  * @return Boolean flag.
+ * @since 1.0
  */
 String.prototype.parseBoolean = function(){
 	
+	'use strict';
+
 	switch( this.toUpperCase() ){
 		
+		case '1' :
+		case 'T' :
 		case 'TRUE' :
 			return true;
 			
+		case '0' :
+		case 'F' :
 		case 'FALSE' :
 			return false;
 			
@@ -272,14 +315,17 @@ String.prototype.parseBoolean = function(){
 
 /**
  * Parse Query String
- * @desc Parse a query string to an object.
+ * @desc Parse a querystring into a JavaScript object.
  * @param {string} name Optional named param to return.
  * @return Javascript object.
+ * @since 2.1
  */
 String.prototype.parseQueryString = function( name ){
     
-    var qs  = this,
-        obj = {};
+	'use strict';
+
+    var qs = this;
+    var obj = {};
     
     qs = qs.replace( /^\?/, '' ).split( /&/ );
     
