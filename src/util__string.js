@@ -2,7 +2,7 @@
  * String Utilities (util)
  * @fileoverview Sets up prototype functions on JavaScripts String object.
  * @author <a href="http://yaypaul.com">Paul West</a>
- * @version 2.1
+ * @version 2.2
  * @license None (public domain)
  */
 
