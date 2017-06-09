@@ -5,7 +5,7 @@ I created these utilities some time ago for my own projects. They will have gone
 I finally found the time to make proper repros and read me files so I could upload them. I hope you find them as useful as I do!
 
 ### Version
-2.2
+2.3
 
 # Installation
 As these are Prototypes and not framework functions, all you need to do is load the file as part of your stack. I recommend after your other library includes.
@@ -26,7 +26,7 @@ Encodes a string in UTF8 format. (mostly needed for the base64 methods, but also
 ```
 
 ### decodeUTF8
-Decodes a UTF8 string (mostly needed for the base64 methods, but also has other uses).
+Decodes a UTF8 string. (mostly needed for the base64 methods, but also has other uses)
 ```javascript
 ( String ).decodeUTF8();
 ```
@@ -70,10 +70,11 @@ Parse a string as a Boolean value.
 Parse a querystring into a JavaScript object.
 ```javascript
 ( String ).parseQueryString();
-//this=that&cats=floofs => {this:that,cats:floofs}
+//this=that&cats=floofs => {this:'that',cats:'floofs'}
 ```
 
 # Change Log
+2.3 Adjusted comments to match read me. Force strict modes. Added more options to parseBoolean. Cleaned up scripts for readability.
 2.2 Added trimToEllipsis function.
 2.1 Added parseQueryString function.  
 2.0 Rebuilt script to be prototypes instead of framework functions.  
