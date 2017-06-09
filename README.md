@@ -1,7 +1,7 @@
 # utils__string
 
 Prototype String Utilities  
-I created these utilities some time ago for my own projects. They will have gone through numerous versions and may have picked up some pieces from other MIT projects. I've tried to keep them small, only including operations I find myself doing time after time.
+I created these utilities some time ago for my own projects. They will have gone through numerous versions. I've tried to keep them small, only including operations I find myself doing time after time.
 I finally found the time to make proper repros and read me files so I could upload them. I hope you find them as useful as I do!
 
 ### Version
